@@ -1,0 +1,46 @@
+.page-home {
+  padding-top: 15px;
+
+  .ph-btn-list {
+    .item {
+      margin-bottom: 25px;
+
+      .jb-wrapper {
+        width: 100%;
+      }
+    }
+
+    .b-content {
+      padding: 24px 16px 16px 16px;
+      border-radius: 8px;
+      border: solid 1px var(--soda-grey-5);
+      margin-bottom: 36px;
+      cursor: pointer;
+
+      .b-header {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 12px;
+
+        span {
+          font-size: 20px;
+        }
+
+        p:first-of-type {
+          font-size: 40px;
+        }
+
+        p:last-of-type {
+          font-size: 18px;
+        }
+      }
+
+      .b-main {
+        border-top: solid 1px var(--soda-grey-5);
+        padding-top: 16px;
+        color: var(--soda-error);
+        text-align: left;
+      }
+    }
+  }
+}

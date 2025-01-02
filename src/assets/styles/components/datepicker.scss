@@ -1,0 +1,28 @@
+// date-range-picker
+.date-range-picker {
+  width: 100%;
+
+  .el-input.el-date-editor {
+    width: 100%;
+  }
+
+  .filter-special {
+    display: flex;
+  }
+
+  .custom-tilde {
+    position: absolute;
+    padding: 39px 0 0 10px;
+  }
+
+  .date-picker .el-input__wrapper span.el-input__prefix {
+    display: none;
+  }
+}
+
+//date-picker
+.date-picker {
+  .el-input__wrapper {
+    width: 100%;
+  }
+}

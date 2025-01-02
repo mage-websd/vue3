@@ -1,0 +1,49 @@
+.content-block {
+  .cb-title {
+    font-size: 20px !important;
+    font-weight: 700;
+    line-height: 22px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--soda-grey-5);
+  }
+
+  .cb-subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+
+  .item-block {
+    margin-bottom: 16px;
+
+    span {
+      margin-left: 8px;
+    }
+  }
+}
+
+.page-head-block {
+  margin-bottom: 25px;
+
+  h1 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+}
+
+.compare-value {
+  .origin {
+    display: inline-block;
+  }
+
+  .icon,
+  .new {
+    color: var(--soda-error);
+    display: inline-block;
+    margin-left: 20px;
+  }
+}

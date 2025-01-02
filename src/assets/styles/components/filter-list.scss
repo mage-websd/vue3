@@ -1,0 +1,92 @@
+@use '../abstracts/mixins';
+
+.filter-box-card {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 0;
+  min-width: 360px;
+  width: 100%;
+  padding: 24px;
+
+  .el-card__body {
+    padding: 0;
+  }
+
+  .el-row-text {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .el-row-text.custom-label {
+    margin-top: 27px;
+    margin-bottom: 20px;
+  }
+
+  .el-form-item__label {
+    font-weight: 400;
+    color: var(--soda-black-text);
+  }
+
+  .el-radio {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--soda-black-text);
+  }
+
+  .el-radio__label {
+    font-size: 16px;
+  }
+
+  .el-radio__input {
+    &.is-checked {
+      + .el-radio__label {
+        color: var(--soda-black-text);
+      }
+
+      .el-radio__inner {
+        border-color: var(--soda-black-text);
+        background: var(--vt-c-white);
+
+        &::after {
+          background-color: var(--soda--primary);
+        }
+      }
+    }
+  }
+
+  .el-radio__inner {
+    border-color: var(--soda-black-text);
+
+    &::after {
+      width: 8px;
+      height: 8px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    &:hover {
+      border-color: solid 1px var(--soda-black-text);
+    }
+  }
+
+  .el-select {
+    .el-select__wrapper {
+      display: flex;
+      box-shadow: none;
+      flex-direction: row;
+      align-items: center;
+      border-radius: unset;
+      background: var(--soda-border-grey-block);
+      border-bottom: 1px solid var(--soda-light-grey-border);
+      height: 48px;
+      width: 100%;
+      padding: 12px;
+    }
+  }
+
+  @include mixins.tabletPc {
+    min-width: 500px;
+  }
+}

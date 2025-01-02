@@ -1,0 +1,14 @@
+{
+  "success": "success",
+  "login success": "login success",
+  "Login": "Login",
+  "Welcome": "Welcome",
+  "Home": "Home",
+  "500_message": "Internal Server Error",
+  "Back": "Back",
+  "Confirm": "Confirm",
+  "Submit": "Submit",
+  "Clear": "Clear",
+  "Filter": "Filter",
+  "empty_data": "Empty data"
+}

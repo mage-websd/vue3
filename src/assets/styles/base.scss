@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  color: var(--soda-black-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-width: 350px;
+  font-weight: normal;
+}
+
+.prewrap {
+  white-space: pre-wrap;
+}
+
+.word-break {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.break-all {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.required {
+  color: var(--soda-error);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mgb12 {
+  margin-bottom: 12px;
+}
+
+.mgb16 {
+  margin-bottom: 16px;
+}
+
+.mgt16 {
+  margin-top: 16px;
+}

@@ -1,0 +1,14 @@
+services:
+  soda_vue3:
+    build:
+      context: ../../
+      dockerfile: infrastructure/prod/Dockerfile
+    container_name: soda_vue3
+    image: soda_vue3
+    restart: on-failure:5
+    ports:
+      - 80:80
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
