@@ -1,0 +1,68 @@
+name: Soda run test when pr
+
+on:
+  pull_request:
+    branches:
+      - develop_actions
+  push:
+    branches: ['develop_actions']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sd-runtest:
+    name: Soda run test when pr
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        id: checkout
+      - uses: actions/setup-node@v4
+        id: setupnode
+        with:
+          node-version: v22.12.0
+      - name: View node version
+        id: nodeversion
+        run: |
+          node -v
+          npm -v
+          sudo apt install jq
+
+      - name: Install package
+        id: install_package
+        run: |
+          npm install
+          echo "${{ steps.setupnode.outputs }}" | jq -r 'to_entries[] | "\(.key): \(.value)"' 
+          echo checkout ${{ steps.checkout.outputs }}
+          echo nodeversion ${{ steps.nodeversion.outputs }}
+
+      - name: eslint check rule and format
+        id: run_lint
+        run: |
+          npm run format:check
+          npm run eslint
+          echo install_package ${{ steps.install_package.outputs }}
+
+      - name: Run unit test
+        id: run_ut
+        run: |
+          npm run test
+          echo run_lint ${{ steps.run_lint.outputs }}
+
+      - name: Run build
+        id: runbuild
+        run: |
+          npm run build
+          echo run_ut ${{ steps.run_ut.outputs }}
+
+      - name: Run output 1
+        id: runoutput1
+        run: |
+          echo runbuild ${{ steps.runbuild.outputs }}
+      - name: Run output 2
+        id: runoutput2
+        run: |
+          echo runoutput1 ${{ steps.runoutput1.outputs }}

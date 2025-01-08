@@ -7,6 +7,7 @@ const authStore = useAuthStore();
 
 onMounted(async () => {
   authStore.checkAuth();
+  console.log(authStore);
 });
 </script>
 

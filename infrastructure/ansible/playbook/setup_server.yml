@@ -1,0 +1,19 @@
+---
+- name: Run script on remote servers
+  hosts: soda_server
+  become: yes # run as sudo root
+  tasks:
+    - name: Copy script to remote server
+      copy:
+        src: ../scripts/setup_server.sh
+        dest: /tmp/setup_server.sh
+        mode: '0755'
+
+    - name: Execute script on remote server
+      command: bash /tmp/setup_server.sh
+
+    - name: Execute script on remote server
+      shell: |
+        pwd
+        ls -al
+        cat /etc/os-release

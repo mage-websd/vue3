@@ -1,0 +1,52 @@
+name: Soda Deploy to Docker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sd-deploy:
+    name: Deploy test soda
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Docker version
+        run: docker -v && docker compose version
+      - name: Docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_SODA_USERNAME }}
+          password: ${{ secrets.DOCKER_SODA_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ secrets.DOCKER_SODA_USERNAME }}/internal:githubaction
+          context: .
+          file: infrastructure/prod/Dockerfile
+
+      #### run ssh manual
+      # - name: Set up SSH
+      #   run: |
+      #     mkdir -p ./ssh
+      #     echo "${{ secrets.DOCKER_SODA_SSH_PEM }}" > ./ssh/id_rsa
+      #     chmod 600 ./ssh/id_rsa
+      #     cat ./ssh/id_rsa
+
+      # - name: SSH and execute script
+      #   run: |
+      #     ssh -i ./ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.DOCKER_SODA_SSH_USER }}@${{ secrets.DOCKER_SODA_SSH_SERVER }} whoami
+
+      #### run ssh lib action
+      - name: ssh
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DOCKER_SODA_SSH_SERVER }}
+          username: ${{ secrets.DOCKER_SODA_SSH_USER }}
+          key: ${{ secrets.DOCKER_SODA_SSH_PEM }}
+          script: whoami
